@@ -8,12 +8,20 @@ import * as cheerio from 'cheerio';
 import Groq from 'groq-sdk';
 
 const currentDirectory = path.dirname(fileURLToPath(import.meta.url));
-dotenv.config({ path: path.resolve(currentDirectory, '../.env') });
+
+dotenv.config({
+  path: path.resolve(currentDirectory, '../.env'),
+});
 
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.use(cors({ origin: process.env.CLIENT_ORIGIN || 'http://localhost:5173' }));
+app.use(
+  cors({
+    origin: process.env.CLIENT_ORIGIN || 'http://localhost:5173',
+  })
+);
+
 app.use(express.json({ limit: '20kb' }));
 
 function validateUrl(value) {

@@ -84,7 +84,6 @@ PageBrief is a full-stack web application that converts public webpages into con
 
 6. Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-
 ## Available Scripts
 
 | Command                         | Description                                            |
@@ -126,6 +125,17 @@ Scrapes a public HTML webpage and returns an AI-generated summary.
   "error": "A description of what prevented the summary from being created."
 }
 ```
+
+## Limitations
+
+- The scraper is intended for publicly accessible, server-rendered HTML pages. Content that depends on heavy client-side JavaScript may be incomplete or unavailable.
+- Websites protected by login screens, CAPTCHAs, rate limits, paywalls, or advanced bot protection may reject the request.
+- The application accepts only public `http` and `https` URLs. Localhost, private-network, and non-web URLs are blocked for security.
+- Long pages are truncated before being sent to the AI provider, so a summary may not include content near the end of a very large article.
+- Summaries are AI-generated and may omit details or contain inaccuracies. Review the linked source page for important decisions or factual claims.
+- The application depends on the availability, quotas, and model access associated with the configured Groq API key.
+- Render free-tier services can take time to wake after inactivity, which may make the first request slower.
+
 ## Deployment on Render
 
 Deploy the backend first as a Render **Web Service**:
